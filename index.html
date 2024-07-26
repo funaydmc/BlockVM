@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockVM</title>
+    <script src="https://unpkg.com/mineflayer@4.20.1/index.js"></script>
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/python_compressed.js"></script>
+    <script src="https://unpkg.com/@blockly/shadow-block-converter@6.0.4/dist/index.js"></script>
+    <script src="https://unpkg.com/blockly/msg/vi.js"></script>
+    <script src="./src/lang.js"></script>
+    <script src="./src/main.js"></script>
+    <script src="./src/blocks/general.js"></script>
+    <script src="./src/blocks/math.js"></script>
+    <script src="./src/blocks/string.js"></script>
+    <script src="./src/blocks/list.js"></script>
+    <script src="./src/blocks/bukkit.js"></script>
+    <style>
+        html, body {margin: 0; padding: 0;}
+        .comment {
+            background-color: #f1f1f1; 
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .comment span::before {
+            content: ' ';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #f00;
+            margin-right: 5px;
+            filter: hue-rotate(calc(var(--color) * 1deg));
+        }
+    </style>
+</head>
+<body>
+    <div id="blocklyDiv" style="height: 70vh; width: 100vw;"></div>
+    <pre id="generated"></pre>
+</body>
+<script>
+    function randomID(length = 20) {
+        const chars = '!#$%()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+        return new Array(length).fill('').map(i=>chars[Math.floor(Math.random() * chars.length)]).join('');
+    }
+
+    window.Blockly = Blockly
+    Blockly.utils.colour.setHsvSaturation(0.65)
+    Blockly.utils.colour.setHsvValue(0.65)
+    async function start(){
+        let toolbox = await fetch('./toolbox.xml').then(response => response.text())
+        Blockly.Theme.defineTheme('funayd', {
+           'base': Blockly.Themes.Classic,
+           'componentStyles': {
+                'scrollbarOpacity': 0.001,
+                'scrollbarColor': '#fff',
+           },
+           'fontStyle': {
+                'family': 'consolas',
+                'weight': 'normal',
+                'size': 12
+            },
+           'startHats': true
+        });
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox,
+            scrollbars: true,
+            theme: 'funayd',
+            zoom : {
+	        	controls : false, 
+	        	wheel : true, 
+	        	startScale : 0.9, 
+	        	maxScale : 3, 
+	        	minScale : 0.5, 
+	        	scaleSpeed : 1.05
+	        }
+        });
+        let saved = localStorage.getItem('workspace');
+        if (saved) {
+          Blockly.serialization.workspaces.load(JSON.parse(saved), workspace);
+        }
+        const supportedEvents = new Set([
+          Blockly.Events.BLOCK_CHANGE,
+          Blockly.Events.BLOCK_CREATE,
+          Blockly.Events.BLOCK_DELETE,
+          Blockly.Events.BLOCK_MOVE,
+        ]);
+        var altDown = false;
+        document.addEventListener('keydown', function(event) {if (event.key === 'Alt')altDown = true;});
+        document.addEventListener('keyup', function(event) {if (event.key === 'Alt') altDown = false;});
+        
+        function updateCode(event) {
+            if (workspace.isDragging()) return;
+            if (!supportedEvents.has(event.type)) return;
+            const code = '#coding: utf-8\n'+python.pythonGenerator.workspaceToCode(workspace);
+            document.getElementById('generated').innerHTML = code;
+            const state = Blockly.serialization.workspaces.save(workspace);
+            localStorage.setItem('workspace', JSON.stringify(state));
+        }
+
+        workspace.addChangeListener(updateCode);
+        workspace.addChangeListener(shadowBlockConversionChangeListener);
+        window.workspace = workspace;
+    }
+    start()
+</script>
+</html>

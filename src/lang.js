@@ -1,0 +1,9 @@
+Blockly.Msg["PROCEDURES_DEFNORETURN_COMMENT"] = '';
+Blockly.Msg["PROCEDURES_DEFRETURN_COMMENT"] = '';
+Blockly.Msg["PROCEDURES_DEFNORETURN_TITLE"] = 'Hàm';
+Blockly.Msg["PROCEDURES_DEFRETURN_TITLE"] = 'Hàm';
+Blockly.Msg["PROCEDURES_DEFRETURN_RETURN"] = 'Trả về';
+Blockly.Msg["PROCEDURES_DEFNORETURN_PROCEDURE"] = 'name';
+Blockly.Msg["PROCEDURES_DEFRETURN_PROCEDURE"] = 'name';
+Blockly.Msg["VARIABLES_DEFAULT_NAME"] = 'foo';
+Blockly.Msg["LISTS_CREATE_EMPTY_TITLE"] = 'danh sách trống';

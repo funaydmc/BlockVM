@@ -1,0 +1,62 @@
+general:
+  on_event: khi <EVENT> xảy ra => STATEMENT
+
+config:
+  
+
+list:
+  # getter => có giá trị trả về khác boolean
+  list_with_name: danh sách <STRING> => LIST
+  name_of_list: tên của <LIST> => STRING
+  size_of_list: số lượng phần tử trong <LIST> => NUMBER
+  element_of_list: phần tử thứ <NUMBER> trong <LIST> => ELEMENT
+
+  # checker => có giá trị trả về là boolean
+  is_empty: <LIST> rỗng
+  is_contain: <LIST> chứa <ELEMENT>
+  is_equal: <LIST> bằng <LIST>
+  is_not_equal: <LIST> khác <LIST>
+
+  # handler => không có giá trị trả về
+  add_element_to_list: Thêm <ELEMENT> vào <LIST>
+  remove_element_from_list: Xóa <ELEMENT> khỏi <LIST>
+  clear_list: Xóa tất cả phần tử trong <LIST>
+
+  # controller => có thể thực thi block con
+  for_each_element_in_list: Duyệt qua từng phần tử trong <LIST> => ELEMENT
+
+
+player:
+  # getter => có giá trị trả về khác boolean
+  player_with_name: người chơi <STRING> => PLAYER
+  name_of_player: tên của <PLAYER> => STRING
+  position_of_player: vị trí của <PLAYER> => POSITION
+  world_of_player: thế giới của <PLAYER> => WORLD
+
+  # checker => có giá trị trả về là boolean
+  has_permission: <PLAYER> có quyền <STRING>
+  is_online: <PLAYER> đang [online|offline]
+  is_op: <PLAYER> có quyền OP
+  is_banned: <PLAYER> đã bị ban
+
+  # handler => không có giá trị trả về
+  send_message: Gửi tin ngắn <MSG> cho <WHO>
+  send_message_to_all: Gửi tin nhắn <MSG> cho tất cả người chơi
+  teleport_player: Teleport <WHO> đến <POSITION>
+
+  # controller => có thể thực thi block con
+
+position:
+  # world - x - y - z - yaw - pitch
+  world: thế giới <STRING> => WORLD
+  position: vị trí <STRING|WORLD> <NUMBER> <NUMBER> <NUMBER> <NUMBER> <NUMBER> => POSITION
+  any_of_position: <world|x|y|z|yaw|pitch> của <POSITION> => NUMBER
+  position_with: vị trí <POSITION> với <world|x|y|z|yaw|pitch> bằng <WORLD|NUMBER> => POSITION
+  position_offset: vị trí <POSITION> dịch chuyển theo <x|y|z|yaw|pitch> <NUMBER> block => POSITION
+
+
+server:
+  console: variable console
+  
+
+  

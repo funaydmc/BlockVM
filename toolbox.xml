@@ -1,0 +1,226 @@
+<xml id="toolbox" style="display: none">
+    <category name="General" colour="120">
+        <block type="general_number"></block>
+        <block type="general_boolean"></block>
+        <block type="general_string">
+            <field name="STR">alpha</field>
+        </block>
+        <block type="general_null"></block>
+        <block type="general_rev"></block>
+        <block type="general_typeof"></block>
+        <block type="controls_if">
+            <value name="IF0">
+                <shadow type="general_boolean"></shadow>
+            </value>
+        </block>
+        <block type="controls_else"></block>
+        <block type="controls_repeat_ext">
+            <value name="TIMES">
+                <shadow type="general_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="general_loop_operator"></block>
+    </category>
+    <category name="Math" colour="210">
+        <block type="general_operator">
+            <value name="A">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="B">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="general_compare">
+            <value name="A">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="B">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_round">
+            <value name="NUM">
+                <shadow type="general_number">
+                    <field name="NUM">3.1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_trigo">
+            <value name="NUM">
+                <shadow type="general_number">
+                    <field name="NUM">45</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_util">
+            <value name="NUM">
+                <shadow type="general_number">
+                    <field name="NUM">9</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_random">
+            <value name="FROM">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="TO">
+                <shadow type="general_number">
+                    <field name="NUM">3</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+
+    <category name="String" colour="160">
+
+        <block type="string_length">
+            <value name="STR">
+                <shadow type="general_string">
+                    <field name="STR">alpha</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="string_start_end">
+            <value name="STR">
+                <shadow type="general_string">
+                    <field name="STR">alpha</field>
+                </shadow>
+            </value>
+            <value name="SUBSTR">
+                <shadow type="general_string">
+                    <field name="STR">a</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="string_slice">
+            <value name="STR">
+                <shadow type="general_string">
+                    <field name="STR">alpha</field>
+                </shadow>
+            </value>
+            <value name="START">
+                <shadow type="general_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="END">
+                <shadow type="general_number">
+                    <field name="NUM">3</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+    <category name="Lists" colour="#745ba5">
+        <block type="list_empty"></block>
+        <block type="list_length">
+          <value name="LIST">
+            <block type="variables_get">
+              <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+            </block>
+          </value>
+        </block>
+        <block type="list_index">
+            <value name="LIST">
+                <block type="variables_get">
+                <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+                </block>
+            </value>
+            <value name="INDEX">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="list_set">
+            <value name="LIST">
+                <block type="variables_get">
+                <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+                </block>
+            </value>
+            <value name="INDEX">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="list_add">
+            <field name="AT">last</field>
+            <value name="LIST">
+                <block type="variables_get">
+                <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+                </block>
+            </value>
+            <value name="INDEX">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="list_random">
+            <value name="LIST">
+                <block type="variables_get">
+                <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="list_remove">
+            <value name="LIST">
+                <block type="variables_get">
+                <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="list_remove_at">
+            <value name="LIST">
+                <block type="variables_get">
+                <field name="VAR" id="?{@%l~/T+#ipvWG4ZvQJ">list</field>
+                </block>
+            </value>
+            <value name="INDEX">
+                <shadow type="general_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+    <sep/> <sep/>
+    <category name="Bukkit" colour="#F16900">
+        <block type="bukkit_print_console">
+            <value name="MSG">
+                <shadow type="general_string">
+                    <field name="STR">Hello, World!</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="bukkit_sendMessage">
+            <value name="MSG">
+                <shadow type="general_string">
+                    <field name="STR">Hello, World!</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="bukkit_player">
+            <value name="NAME">
+                <shadow type="general_string">
+                    <field name="STR">Steve</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="bukkit_online_players"></block>
+    </category>
+    <sep/> <sep/>
+    <category name="Variable" colour="330" custom="VARIABLE"></category>
+    <category name="Function" colour="290" custom="PROCEDURE"></category>
+</xml>
